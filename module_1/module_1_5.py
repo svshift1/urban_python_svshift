@@ -22,6 +22,6 @@ except Exception as e:
 
 mutable_list=[1,"два",3.0, True]
 #another_list=mutable_list # -- ссылка на тот же объект
-#mutable_list[1]="two" # значение поменятеся и в another_list[1]
+mutable_list[1]="two" # значение поменятеся и в another_list[1]
 print('mutable ',type(mutable_list).__name__,':',mutable_list);
 #print('another mutable ',type(another_list).__name__,':',another_list);
