@@ -1,6 +1,9 @@
 from collections.abc import Iterable
 
 
+# извините. изучаю новое для себя -- typehints.
+
+
 def count_calls() -> int:
     global calls
     calls += 1
@@ -12,7 +15,6 @@ def string_info(s: str) -> tuple:
     return len(s), s.upper(), s.lower()
 
 
-# извините. изучаю новое для себя -- typehints.
 def is_contains(s: str, lst: Iterable) -> bool:
     count_calls()
     for x in lst:
@@ -29,6 +31,6 @@ def is_contains(s: str, lst: Iterable) -> bool:
 calls: int = 0
 print(string_info('Capybara'))
 print(string_info('Armageddon'))
-print(is_contains('Urban', ['ban', 'BaNaN', 'urBAN'])) # Urban ~ urBAN
-print(is_contains('cycle', ['recycling', 'cyclic'])) # No matches
+print(is_contains('Urban', ['ban', 'BaNaN', 'urBAN']))  # Urban ~ urBAN
+print(is_contains('cycle', ['recycling', 'cyclic']))  # No matches
 print(calls)
