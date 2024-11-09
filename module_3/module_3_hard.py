@@ -19,7 +19,7 @@ def calculate_structure_sum(d):
 
 
 data_structure = [
-    [(-1)**0.5, 2, 3], # с комплексной 1j так смешнее.
+    [(-1) ** 0.5, 2, 3],  # с комплексной 1j так смешнее.
     {'a': 4, 'b': 5},
     (6, {'cube': 7, 'drum': 8}),
     "Hello",
@@ -27,4 +27,10 @@ data_structure = [
 ]
 
 result = calculate_structure_sum(data_structure)
+print(result)
+
+result = calculate_structure_sum({1: "1", 2: "2", 3: "3"})
+print(result)
+
+result = calculate_structure_sum({(1, 2): "12", (3, 4): "34"})
 print(result)
