@@ -31,7 +31,7 @@ class Shop:
     def add(self, *products: Product) -> None:  # типа тогда products ожидается как tuple[Product]
         self.get_products()
         for it in products:
-            if any(p.name == it.name for p in self.__products):
+            if any(p.name.lower() == it.name.lower() for p in self.__products):
                 print(f"Продукт {it.name} уже есть в магазине")
             else:
                 self.__products.append(it)
@@ -41,6 +41,7 @@ class Shop:
 
     def get_products(self) -> str:
         f = open(self.__filename, mode="r", encoding="cp1251", errors='replace')
+        # lines = f.readlines() # так \n останутся в овощах
         lines = map(lambda x: x.rstrip('\n'), f.readlines())
         f.close()
         self.__products = []
@@ -54,8 +55,9 @@ s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
 p2 = Product('Spaghetti', 3.4, 'Groceries')
 # формально Potato уже есть в магазине. пример работы программы приведенный в задании некорректен
+# в задании сказано сравнивать только по названию
 # здесь он обязан сказать что картоха уже есть.
-p3 = Product('Potato', 5.5, 'Vegetables')
+p3 = Product('POTATO', 5.5, 'Vegetables')
 
 print(p2) # __str__
 
