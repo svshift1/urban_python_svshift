@@ -46,6 +46,7 @@ class WordsFinder():
             res[fname] = c
         return res
 
+# респект тому, что подбирал тексты !
 
 path = '7_3_files'
 os.chdir(path)
