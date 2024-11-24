@@ -23,21 +23,23 @@ class Shop:
         self.__products: list[Product] = []
         if not os.path.isfile(filename):
             # создать путой файл
-            f=open(filename,'w')
+            f = open(filename, 'w')
             f.close()
         else:
             self.get_products()
 
     def add(self, *products: Product) -> None:  # типа тогда products ожидается как tuple[Product]
         self.get_products()
+        new_list: list[Product] = []  # я считаю это изврат !
         for it in products:
             if any(p.name.lower() == it.name.lower() for p in self.__products):
                 print(f"Продукт {it.name} уже есть в магазине")
             else:
-                self.__products.append(it)
-                f = open(self.__filename, mode="a", encoding="cp1251", errors='replace')
-                f.write(str(it) + '\n')
-                f.close()
+                new_list.append(it)
+        f = open(self.__filename, mode="a", encoding="cp1251", errors='replace')
+        for it in new_list: # теперь добавляем новую пачку продуктов в файл
+            f.write(str(it) + "\n")
+        f.close()
 
     def get_products(self) -> str:
         f = open(self.__filename, mode="r", encoding="cp1251", errors='replace')
@@ -51,6 +53,7 @@ class Shop:
         res = '\n'.join(map(str, self.__products))
         return res
 
+
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
 p2 = Product('Spaghetti', 3.4, 'Groceries')
@@ -59,7 +62,7 @@ p2 = Product('Spaghetti', 3.4, 'Groceries')
 # здесь он обязан сказать что картоха уже есть.
 p3 = Product('POTATO', 5.5, 'Vegetables')
 
-print(p2) # __str__
+print(p2)  # __str__
 
 s1.add(p1, p2, p3)
 
