@@ -1,6 +1,6 @@
 import threading
 import time
-from datetime import datetime, timedelta
+from datetime import  timedelta
 
 
 def write_words(n:int, filename: str) -> None:
