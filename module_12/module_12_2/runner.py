@@ -26,9 +26,9 @@ class Runner:
 class Tournament:
     def __init__(self, distance, *participants):
         self.full_distance = distance
-        self.participants = list(participants) # todo: need check.
+        self.participants = list(participants)
         #№ если раскомментировать следующую строчку, то 4 тест пройдет   <------  !!!!!!!!!!!!!!!!
-        self.participants.sort(key=lambda x : x.speed, reverse=True)
+        #self.participants.sort(key=lambda x : x.speed, reverse=True)
 
     def start(self):
         finishers = {}
