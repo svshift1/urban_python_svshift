@@ -36,7 +36,7 @@ class Video:
         return f"'{self.title}'"
 
     def __repr__(self):
-        return f"Video(title='{self.title}', duration={self.duration}{", 18+" if  self.adult_mode else ""})"
+        return f"Video(title='{self.title}', duration={self.duration}, { '18+' if  self.adult_mode else ''})"
 
     def __eq__(self, other: (str, 'Video')):
         if isinstance(other, str):
