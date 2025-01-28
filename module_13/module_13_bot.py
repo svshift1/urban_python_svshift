@@ -1,6 +1,6 @@
-# использую aiogram 3.x
+
+# использую aiogram 3.x !!!!!!!!!!!
 import asyncio
-import logging
 import os.path
 
 from aiogram import Bot, Dispatcher, types
