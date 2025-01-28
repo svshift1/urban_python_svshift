@@ -9,4 +9,4 @@ logging.basicConfig(level=logging.INFO, encoding="utf-8", filename="runner_test.
                     format="%(asctime)s|%(levelname)s| %(message)s")
 
 # это забавно, но аннотатор  @loggable который я написал устроен так, что все тесты проходят.
-unittest.main(verbosity=2, durations=True)
+unittest.main(verbosity=2)
