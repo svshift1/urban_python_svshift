@@ -18,6 +18,7 @@ async def start_tournament(*args) -> None:
         tasks.append(asyncio.create_task(start_strongman(args[2 * k], args[2 * k + 1])))
     for t in tasks:
         await t
+    # TaskGroup круче!
 
 
 asyncio.run(start_tournament('Petya', 2, 'Vasya', 3, 'Kolya', 4))
