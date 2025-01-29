@@ -21,7 +21,7 @@ def initiate_db(conn: sqlite3.Connection) -> None:
 
 def get_all_products(conn: sqlite3.Connection) -> list:
     cur = conn.cursor()
-    cur.execute("SELECT title, description, price FROM products ORDER BY id")
+    cur.execute("SELECT id, title, description, price FROM products ORDER BY id")
     prods = cur.fetchall()
-    prods = [dict(zip(('title', 'description', 'price'), p)) for p in prods]
+    prods = [dict(zip(('id', 'title', 'description', 'price'), p)) for p in prods]
     return prods

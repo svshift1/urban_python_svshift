@@ -1,6 +1,7 @@
 # использую aiogram 3.x !!!!!!!!!!!
 import asyncio
 import os.path
+import sys
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import (Message, ReplyKeyboardMarkup, KeyboardButton,
@@ -31,7 +32,13 @@ formulaIButton = InlineKeyboardButton(text='Формулы рассчета', ca
 ikb = InlineKeyboardMarkup(inline_keyboard=[[calcIButton, formulaIButton]])
 
 # база данных продуктов
-conn = sqlite3.connect('products.db')
+try:
+    conn = sqlite3.connect('products.db')
+except Exception as e:
+    print(str(e))
+    sys.exit(-1)
+
+
 initiate_db(conn)
 
 class UserState(StatesGroup):
@@ -55,10 +62,11 @@ async def get_buying_list(message: Message):
     ikb2 = InlineKeyboardMarkup(inline_keyboard=productButtons)
 
     for p in products:
-        await  message.answer(f" {p['name']} | {p['description']} | цена: {p['price']}")
-    #     await  message.answer_photo(FSInputFile(p['img']),f" {p['name']} | цена: {p['price']}")
+        #await  message.answer(f" {p['title']} | {p['description']} | цена: {p['price']}")
+        img_name=str(p['id'])+'.jpg'
+        await  message.answer_photo(FSInputFile(img_name),f" {p['title']} | {p['description']} | цена: {p['price']}")
     #     await  message.answer(p['desc'])
-    await message.answer('Выберите продукт для покупки:', reply_markup=ikb2)
+    await message.answer('\nВыберите продукт для покупки:', reply_markup=ikb2)
 
 @dp.callback_query(F.data == 'product_buying')
 async def reply_calories(callback: CallbackQuery):
