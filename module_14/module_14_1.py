@@ -40,5 +40,5 @@ try:
         for user in cur.fetchall():
             print("Имя: %s | Почта: %s | Возраст: %d | Баланс: %d " % user)
 
-except sqlite3.OperationalError as e:
+except Exception as e:
     print("Error with DB:", e)
